@@ -34,7 +34,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
         return Color.fromARGB(255, 32, 65, 154);
 
       case "B":
-        return Color.fromARGB(255, 122, 193, 167);
+        return Color.fromARGB(255, 122, 193, 67);
 
       case "C":
         return Color.fromARGB(255, 253, 187, 48);
@@ -268,7 +268,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                         onTap: (){
                                           Navigator.push( context,
                                             MaterialPageRoute(
-                                              builder: (context) => visualizarEsquema()));
+                                              builder: (context) => visualizarEsquema(nombreEst: '${snapshot.data![index].nombre}',)));
                                         },
                                         child: Container(
                                             decoration: BoxDecoration(

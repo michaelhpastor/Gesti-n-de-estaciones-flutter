@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:trasmi/layout/busqueda_estaciones.dart';
+import 'package:trasmi/layout/layout.dart';
 import 'package:trasmi/layout/login.dart';
 import 'package:trasmi/layout/vista_Editor.dart';
 
@@ -15,12 +18,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.mouse},),
       debugShowCheckedModeBanner: false,
       initialRoute: '/', // Definir la ruta inicial
       routes: {
         '/': (BuildContext context) => const LogIn(),
         '/busqueda': (BuildContext context) => const BusquedaEstaciones(),
         '/editor': (BuildContext context) => const menuEditor(),
+        //'/vista_esquemas': (BuildContext context) => const visualizarEsquema()
       },
     );
   }
