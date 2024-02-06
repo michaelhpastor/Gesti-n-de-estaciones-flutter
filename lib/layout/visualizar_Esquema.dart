@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class visualizarEsquema extends StatefulWidget {
 
   final String nombreEst;
-  const visualizarEsquema({super.key, required this.nombreEst});
+  final Color colorEst;
+  const visualizarEsquema({super.key, required this.nombreEst, required this.colorEst});
 
   
 
@@ -14,11 +15,13 @@ class visualizarEsquema extends StatefulWidget {
 class _visualizarEsquemaState extends State<visualizarEsquema> {
   ScrollController _controller = ScrollController();
   late String nombreEst;
+  late Color colorEst;
 
   @override
   void initState() {
     super.initState();
     nombreEst = widget.nombreEst;
+    colorEst = widget.colorEst;
   }
 
   @override
@@ -26,7 +29,7 @@ class _visualizarEsquemaState extends State<visualizarEsquema> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 70,
-        backgroundColor: Color.fromARGB(255, 227, 27, 35),
+        backgroundColor: colorEst,
         titleSpacing: 0.0,
         title: Row(
           children: [

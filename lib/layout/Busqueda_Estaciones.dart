@@ -13,7 +13,6 @@ class BusquedaEstaciones extends StatefulWidget {
 }
 
 class _BusquedaState extends State<BusquedaEstaciones> {
-
   Future<List<Estacion>> fetchEstaciones() async {
     const url = 'http://127.0.0.1:5000/estaciones';
     final response = await http.get(Uri.parse(url));
@@ -27,9 +26,8 @@ class _BusquedaState extends State<BusquedaEstaciones> {
   }
 
 
-  Color Cambiocolor(String t){
-
-    switch(t){
+  Color Cambiocolor(String t) {
+    switch (t) {
       case "A":
         return Color.fromARGB(255, 32, 65, 154);
 
@@ -68,9 +66,9 @@ class _BusquedaState extends State<BusquedaEstaciones> {
       default:
         return Colors.grey;
     }
-
   }
 
+  TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -227,6 +225,10 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                     padding: const EdgeInsets.fromLTRB(
                                         80, 20, 80, 10),
                                     child: TextField(
+                                        controller: _searchController,
+                                        onChanged: (value) {
+                                          setState(() {});
+                                        },
                                         decoration: InputDecoration(
                                             filled: true,
                                             fillColor: Colors.white,
@@ -252,110 +254,156 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                         ],
                       ),
                       Expanded(
-                          child: Container(
+                        child: Container(
                         child: Center(
-                          child: Container(
-                            height: 400,
-                            width: 500,
-                            child: FutureBuilder<List<Estacion>>(
-                              future: fetchEstaciones(),
-                              builder: (context, snapshot) {
-                                if (snapshot.hasData) {
-                                  return ListView.builder(
-                                    itemCount: snapshot.data!.length,
-                                    itemBuilder: (context, index) {
-                                      return InkWell(
-                                        onTap: (){
-                                          Navigator.push( context,
-                                            MaterialPageRoute(
-                                              builder: (context) => visualizarEsquema(nombreEst: '${snapshot.data![index].nombre}',)));
-                                        },
-                                        child: Container(
-                                            decoration: BoxDecoration(
-                                                color: Cambiocolor('${snapshot.data![index].troncal}').withOpacity(0.5),
-                                                border: Border(
-                                                    bottom: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 1.0),
-                                                    top: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 1.0),
-                                                    left: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 1.0),
-                                                    right: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 1.0),),
-                                                borderRadius: BorderRadius.all(Radius.circular(10))
-                                            ),
-                                            height: 70,
-                                            child: Column(
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsets.only(top: 10),
-                                                  child: Row(
-                                                    children: [
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(left: 39),
-                                                        child: Container(
-                                                          width: 35,
-                                                          height: 35,
-                                                          color: Cambiocolor('${snapshot.data![index].troncal}'),
-                                                          child: Center(
-                                                            child: Text(
-                                                                '${snapshot.data![index].troncal}',
-                                                                style: TextStyle(
-                                                                  fontSize: 20,
-                                                                  fontWeight: FontWeight.bold,
-                                                                  color: Colors.white
-                                                                ),
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        width: 350,
-                                                        child: Center(
-                                                          child: Text(
-                                                              '${snapshot.data![index].nombre}',
-                                                              style: TextStyle(
-                                                                fontSize: 20,
-                                                                fontWeight: FontWeight.bold
-                                                              ),
-                                                              ),
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                          '${snapshot.data![index].ubicacion}')
-                                                    ],
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                                  child: Container(
-                                                      height: 18,  
-                                                      decoration: BoxDecoration(
-                                                        color: Cambiocolor('${snapshot.data![index].troncal}'),
-                                                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
-                                                      ),
-                                                      ),
-                                                )
-                                              ],
-                                            )),
+                          child: Column(
+                            children: [
+                              Container(width: 500, child: Align(alignment: Alignment.topRight, child: IconButton(onPressed: (){/* TO DO*/}, icon: Icon(Icons.filter_list)))),
+                              Container(
+                                height: 400,
+                                width: 500,
+                                child: FutureBuilder<List<Estacion>>(
+                                  future: fetchEstaciones(),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return Center(
+                                        child: CircularProgressIndicator(),
                                       );
-                                    },
-                                  );
-                                } else if (snapshot.hasError) {
-                                  return Center(
-                                    child: Text('Error: ${snapshot.error}'),
-                                  );
-                                } else {
-                                  return Center(
-                                    child: CircularProgressIndicator(),
-                                  );
-                                }
-                              },
-                            ),
+                                    } else if (snapshot.hasError) {
+                                      return Center(
+                                        child: Text('Error: ${snapshot.error}'),
+                                      );
+                                    } else if (!snapshot.hasData ||
+                                        snapshot.data!.isEmpty) {
+                                      return Center(
+                                        child:
+                                            Text('No hay estaciones disponibles.'),
+                                      );
+                                    } else{
+                                      List<Estacion> filteredEstaciones = snapshot
+                                          .data!
+                                          .where((estacion) => estacion.nombre
+                                              .toLowerCase()
+                                              .contains(_searchController.text
+                                                  .toLowerCase()))
+                                          .toList();
+                                      return ListView.builder(
+                                        itemCount: filteredEstaciones.length,
+                                        itemBuilder: (context, index) {
+                                          return InkWell(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          visualizarEsquema(
+                                                            nombreEst:
+                                                                '${filteredEstaciones[index].nombre}',
+                                                            colorEst: Cambiocolor(
+                                                                '${filteredEstaciones[index].troncal}'),
+                                                          )));
+                                            },
+                                            child: Container(
+                                                decoration: BoxDecoration(
+                                                    color: Cambiocolor(
+                                                            '${filteredEstaciones[index].troncal}')
+                                                        .withOpacity(0.5),
+                                                    border: Border(
+                                                      bottom: BorderSide(
+                                                          color: Colors.black,
+                                                          width: 1.0),
+                                                      top: BorderSide(
+                                                          color: Colors.black,
+                                                          width: 1.0),
+                                                      left: BorderSide(
+                                                          color: Colors.black,
+                                                          width: 1.0),
+                                                      right: BorderSide(
+                                                          color: Colors.black,
+                                                          width: 1.0),
+                                                    ),
+                                                    borderRadius: BorderRadius.all(
+                                                        Radius.circular(10))),
+                                                height: 70,
+                                                child: Column(
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 10),
+                                                      child: Row(
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .only(left: 39),
+                                                            child: Container(
+                                                              width: 35,
+                                                              height: 35,
+                                                              color: Cambiocolor(
+                                                                  '${filteredEstaciones[index].troncal}'),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  '${filteredEstaciones[index].troncal}',
+                                                                  style: TextStyle(
+                                                                      fontSize: 20,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      color: Colors
+                                                                          .white),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            width: 350,
+                                                            child: Center(
+                                                              child: Text(
+                                                                '${filteredEstaciones[index].nombre}',
+                                                                style: TextStyle(
+                                                                    fontSize: 20,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                              '${filteredEstaciones[index].ubicacion}')
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.fromLTRB(
+                                                              0, 5, 0, 0),
+                                                      child: Container(
+                                                        height: 18,
+                                                        decoration: BoxDecoration(
+                                                            color: Cambiocolor(
+                                                                '${filteredEstaciones[index].troncal}'),
+                                                            borderRadius:
+                                                                BorderRadius.only(
+                                                                    bottomLeft: Radius
+                                                                        .circular(
+                                                                            10),
+                                                                    bottomRight: Radius
+                                                                        .circular(
+                                                                            10))),
+                                                      ),
+                                                    )
+                                                  ],
+                                                )),
+                                          );
+                                        },
+                                      );
+                                    } 
+                                  },
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       )),
