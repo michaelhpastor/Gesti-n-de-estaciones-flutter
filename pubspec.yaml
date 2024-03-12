@@ -17,6 +17,7 @@ dependencies:
   fluent_ui: ^4.8.2
   http: ^1.2.0
   fluttertoast: ^8.2.4
+  desktop_window: ^0.4.0
 
 dev_dependencies:
   flutter_test:
