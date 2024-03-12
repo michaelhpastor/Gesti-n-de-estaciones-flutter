@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:trasmi/layout/Busqueda_Estaciones.dart';
 import 'package:trasmi/layout/login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -130,12 +131,20 @@ class _MapaInteractivoState extends State<MapaInteractivo> {
               ),
             ),
             ListTile(
+              title: Text('Busqueda simple'),
+              onTap: (){
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => BusquedaEstaciones()));
+              },
+            ),
+            ListTile(
               title: Text('Cerrar sesion'),
               onTap: () {
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (context) => LogIn()));
               },
             ),
+            
             // Agrega más opciones según sea necesario
           ],
         ),
@@ -178,10 +187,195 @@ class _MapaInteractivoState extends State<MapaInteractivo> {
                         image: AssetImage('assets/imagenes/mapaTrasmi.png'))),
               ),
               Positioned(
-                left: MediaQuery.of(context).size.width/21,
+                left: MediaQuery.of(context).size.width*0.046,
                 top: MediaQuery.of(context).size.height*0.215 ,
                 child: EstacionMapa(nombreEstacion: 'Terminal',)
-              )
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.073,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 187',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.095,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Portal del Norte',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.111,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Toberin',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.125,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Cardio\nInfantil',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.14,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Mazuren',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.155,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 146',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.169,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 142',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.185,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Alcalá',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.198,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Prado',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.212,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 127',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.227,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Pepe \nSierra',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.242,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 106',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.256,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 100',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.279,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Virrey',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.292,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 85',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.307,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Héroes',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.34,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 76',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.36,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 72',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.375,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Flores',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.389,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 63',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.404,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 57',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.418,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Marly',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.432,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 45',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.448,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Avenida 39',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.462,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Profamilia',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.477,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 26',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.51,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 22',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.522,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Calle 19',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.543,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Avenida Jimenez A',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.554,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Tercer\nMilenio',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.585,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Hospital',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.6,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Hortua',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.616,
+                top: MediaQuery.of(context).size.height*0.215 ,
+                child: EstacionMapa(nombreEstacion: 'Nariño',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.635,
+                top: MediaQuery.of(context).size.height*0.222,
+                child: EstacionMapa(nombreEstacion: 'Fucha',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.649,
+                top: MediaQuery.of(context).size.height*0.249,
+                child: EstacionMapa(nombreEstacion: 'Restrepo',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.66,
+                top: MediaQuery.of(context).size.height*0.27,
+                child: EstacionMapa(nombreEstacion: 'Olaya',)
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width*0.673,
+                top: MediaQuery.of(context).size.height*0.295,
+                child: EstacionMapa(nombreEstacion: 'Quiroga',)
+              ),
             ]),
           )),
     );

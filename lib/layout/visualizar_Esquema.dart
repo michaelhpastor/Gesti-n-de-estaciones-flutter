@@ -513,7 +513,7 @@ class _visualizarEsquemaState extends State<visualizarEsquema> {
 
                               Container(
                                 width: MediaQuery.of(context).size.width / 4,
-                                height: 50,
+                                height: 44,
                                 decoration: BoxDecoration(
                                   border: Border(
                                     left: BorderSide(
@@ -1217,7 +1217,7 @@ class _visualizarEsquemaState extends State<visualizarEsquema> {
 
                               Container(
                                 width: MediaQuery.of(context).size.width / 4,
-                                height: 50,
+                                height: 44,
                                 decoration: BoxDecoration(
                                   border: Border(
                                     left: BorderSide(
@@ -1897,7 +1897,7 @@ class _visualizarEsquemaState extends State<visualizarEsquema> {
 
                               Container(
                                 width: MediaQuery.of(context).size.width / 4,
-                                height: 50,
+                                height: MediaQuery.of(context).size.height/ 16,
                                 decoration: BoxDecoration(
                                   border: Border(
                                     left: BorderSide(

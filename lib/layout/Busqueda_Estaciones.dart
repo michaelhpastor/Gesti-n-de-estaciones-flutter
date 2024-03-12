@@ -3,6 +3,7 @@ import 'package:trasmi/layout/login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:trasmi/estacion.dart';
+import 'package:trasmi/layout/mapa_interactivo.dart';
 import 'package:trasmi/layout/visualizar_Esquema.dart';
 
 class BusquedaEstaciones extends StatefulWidget {
@@ -130,6 +131,13 @@ class _BusquedaState extends State<BusquedaEstaciones> {
               ),
             ),
             ListTile(
+              title: Text('Mapa Interactivo'),
+              onTap: (){
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => MapaInteractivo()));
+              },
+            ),
+            ListTile(
               title: Text('Cerrar sesion'),
               onTap: () {
                 Navigator.pushReplacement(
@@ -245,7 +253,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                   Image.asset(
                                     'assets/imagenes/Bustm.png',
                                     width: 300,
-                                    height: 300,
+                                    height: 280,
                                   )
                                 ],
                               ),

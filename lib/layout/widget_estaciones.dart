@@ -22,6 +22,7 @@ class _EstacionMapaState extends State<EstacionMapa> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      hoverColor: Colors.purple,
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (context)=>visualizarEsquema(nombreEst: nombreEst, colorEst: Colors.red)));
       },
