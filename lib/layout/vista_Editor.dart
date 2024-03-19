@@ -4,6 +4,7 @@ import 'package:trasmi/layout/login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:trasmi/estacion.dart';
+import 'package:trasmi/layout/mapa_interactivo.dart';
 
 class menuEditor extends StatefulWidget {
   const menuEditor({super.key});
@@ -130,6 +131,13 @@ class _menuEditorState extends State<menuEditor> {
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
+            ),
+            ListTile(
+              title: Text('Mapa interactivo'),
+              onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => MapaInteractivo(num: 2,)));
+              },
             ),
             ListTile(
               title: Text('Cerrar sesion'),
@@ -312,7 +320,7 @@ class _menuEditorState extends State<menuEditor> {
                                   Image.asset(
                                     'assets/imagenes/Bustm.png',
                                     width: 300,
-                                    height: 300,
+                                    height: 280,
                                   )
                                 ],
                               ),

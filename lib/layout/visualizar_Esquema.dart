@@ -374,7 +374,7 @@ class _visualizarEsquemaState extends State<visualizarEsquema> {
 
                                               child: Center(
                                                 child: Text(
-                                                  '23 B/H am',
+                                                  '21 B/H am',
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 15
@@ -398,7 +398,7 @@ class _visualizarEsquemaState extends State<visualizarEsquema> {
 
                                               child: Center(
                                                 child: Text(
-                                                  '21 B/H pm',
+                                                  '23 B/H pm',
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 15

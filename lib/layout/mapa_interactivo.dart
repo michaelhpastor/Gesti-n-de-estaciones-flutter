@@ -6,17 +6,26 @@ import 'package:trasmi/layout/login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:trasmi/estacion.dart';
-import 'package:trasmi/layout/visualizar_Esquema.dart';
+import 'package:trasmi/layout/vista_Editor.dart';
 import 'package:trasmi/layout/widget_estaciones.dart';
 
 class MapaInteractivo extends StatefulWidget {
-  const MapaInteractivo({super.key});
+  final num;
+  const MapaInteractivo({super.key, required this.num});
 
   @override
   State<MapaInteractivo> createState() => _MapaInteractivoState();
 }
 
 class _MapaInteractivoState extends State<MapaInteractivo> {
+  late int numVista;
+
+  @override
+  void initState() {
+    super.initState();
+    numVista = widget.num;
+  }
+
   Future<List<Estacion>> fetchEstaciones() async {
     const url = 'http://127.0.0.1:5000/estaciones';
     final response = await http.get(Uri.parse(url));
@@ -26,6 +35,28 @@ class _MapaInteractivoState extends State<MapaInteractivo> {
       return data.map((json) => Estacion.fromJson(json)).toList();
     } else {
       throw Exception('Error al cargar las estaciones');
+    }
+  }
+
+  Widget vista1o2(int num) {
+    if (num == 1) {
+      return ListTile(
+        title: Text('Busqueda simple'),
+        onTap: () {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => BusquedaEstaciones()));
+        },
+      );
+    }else if(num == 2){
+      return ListTile(
+        title: Text('Busqueda simple'),
+        onTap: () {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => menuEditor()));
+        },
+      );
+    }else{
+      return Container();
     }
   }
 
@@ -130,13 +161,7 @@ class _MapaInteractivoState extends State<MapaInteractivo> {
                 ),
               ),
             ),
-            ListTile(
-              title: Text('Busqueda simple'),
-              onTap: (){
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => BusquedaEstaciones()));
-              },
-            ),
+            vista1o2(numVista),
             ListTile(
               title: Text('Cerrar sesion'),
               onTap: () {
@@ -144,7 +169,7 @@ class _MapaInteractivoState extends State<MapaInteractivo> {
                     context, MaterialPageRoute(builder: (context) => LogIn()));
               },
             ),
-            
+
             // Agrega más opciones según sea necesario
           ],
         ),
@@ -187,195 +212,256 @@ class _MapaInteractivoState extends State<MapaInteractivo> {
                         image: AssetImage('assets/imagenes/mapaTrasmi.png'))),
               ),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.046,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Terminal',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.768,
+                  top: MediaQuery.of(context).size.height * 0.022,
+                  child: Tooltip(
+                    message: "Estaciones 40/144",
+                    child: Container(
+                      width: 52,
+                      height: 53,
+                      //color: Colors.amber,
+                    ),
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.073,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 187',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.046,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Terminal', colEst: cambiocolor("B"),
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.095,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Portal del Norte',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.073,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 187', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.111,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Toberin',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.095,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Portal del Norte', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.125,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Cardio\nInfantil',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.111,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Toberin', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.14,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Mazuren',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.125,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Cardio\nInfantil', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.155,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 146',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.14,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Mazuren', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.169,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 142',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.155,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 146', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.185,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Alcalá',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.169,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 142', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.198,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Prado',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.185,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Alcalá', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.212,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 127',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.198,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Prado', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.227,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Pepe \nSierra',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.212,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 127', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.242,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 106',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.227,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Pepe \nSierra', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.256,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 100',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.242,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 106', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.279,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Virrey',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.256,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 100', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.292,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 85',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.279,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Virrey', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.307,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Héroes',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.292,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 85', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.34,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 76',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.307,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Héroes', colEst: cambiocolor("B")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.36,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 72',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.34,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 76', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.375,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Flores',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.36,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 72', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.389,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 63',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.375,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Flores', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.404,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 57',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.389,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 63', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.418,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Marly',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.404,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 57', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.432,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 45',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.418,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Marly', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.448,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Avenida 39',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.432,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 45', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.462,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Profamilia',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.448,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Avenida 39', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.477,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 26',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.462,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Profamilia', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.51,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 22',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.477,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 26', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.522,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Calle 19',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.51,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 22', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.543,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Avenida Jimenez A',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.522,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 19', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.554,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Tercer\nMilenio',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.543,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Avenida Jimenez A', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.585,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Hospital',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.554,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Tercer\nMilenio', colEst: cambiocolor("A")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.6,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Hortua',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.585,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Hospital', colEst: cambiocolor("H")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.616,
-                top: MediaQuery.of(context).size.height*0.215 ,
-                child: EstacionMapa(nombreEstacion: 'Nariño',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.6,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Hortua', colEst: cambiocolor("H")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.635,
-                top: MediaQuery.of(context).size.height*0.222,
-                child: EstacionMapa(nombreEstacion: 'Fucha',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.616,
+                  top: MediaQuery.of(context).size.height * 0.215,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Nariño', colEst: cambiocolor("H")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.649,
-                top: MediaQuery.of(context).size.height*0.249,
-                child: EstacionMapa(nombreEstacion: 'Restrepo',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.635,
+                  top: MediaQuery.of(context).size.height * 0.222,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Fucha', colEst: cambiocolor("H")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.66,
-                top: MediaQuery.of(context).size.height*0.27,
-                child: EstacionMapa(nombreEstacion: 'Olaya',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.649,
+                  top: MediaQuery.of(context).size.height * 0.249,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Restrepo', colEst: cambiocolor("H")
+                  )),
               Positioned(
-                left: MediaQuery.of(context).size.width*0.673,
-                top: MediaQuery.of(context).size.height*0.295,
-                child: EstacionMapa(nombreEstacion: 'Quiroga',)
-              ),
+                  left: MediaQuery.of(context).size.width * 0.66,
+                  top: MediaQuery.of(context).size.height * 0.27,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Olaya', colEst: cambiocolor("H")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.673,
+                  top: MediaQuery.of(context).size.height * 0.295,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Quiroga', colEst: cambiocolor("H")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.685,
+                  top: MediaQuery.of(context).size.height * 0.32,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Calle 40 S', colEst: cambiocolor("H")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.698,
+                  top: MediaQuery.of(context).size.height * 0.347,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Santa Lucia', colEst: cambiocolor("H")
+                  )),
             ]),
           )),
     );

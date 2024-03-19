@@ -134,7 +134,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
               title: Text('Mapa Interactivo'),
               onTap: (){
                 Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => MapaInteractivo()));
+                    context, MaterialPageRoute(builder: (context) => MapaInteractivo(num: 1)));
               },
             ),
             ListTile(

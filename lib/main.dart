@@ -30,13 +30,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.mouse},),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/mapa_interactivo', // Definir la ruta inicial
+      initialRoute: '/', // Definir la ruta inicial
       routes: {
         '/': (BuildContext context) => const LogIn(),
         '/busqueda': (BuildContext context) => const BusquedaEstaciones(),
         '/editor': (BuildContext context) => const menuEditor(),
         '/vista_esquemas': (BuildContext context) => const vistaEsquema(),
-        '/mapa_interactivo': (BuildContext context) => const MapaInteractivo()
+        '/mapa_interactivo': (BuildContext context) => const MapaInteractivo(num: 1)
       },
     );
   }

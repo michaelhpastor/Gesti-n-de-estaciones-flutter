@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:trasmi/layout/visualizar_Esquema.dart';
 
 class EstacionMapa extends StatefulWidget {
-  final nombreEstacion;
-  const EstacionMapa({super.key, required this.nombreEstacion});
+  final String nombreEstacion;
+  final Color colEst;
+  const EstacionMapa({super.key, required this.nombreEstacion, required this.colEst});
 
   @override
   State<EstacionMapa> createState() => _EstacionMapaState();
@@ -12,11 +13,12 @@ class EstacionMapa extends StatefulWidget {
 class _EstacionMapaState extends State<EstacionMapa> {
 
   late String nombreEst;
-
+  late Color colEst;
   @override
   void initState() {
     super.initState();
     nombreEst = widget.nombreEstacion;
+    colEst = widget.colEst;
   }
 
   @override
@@ -24,14 +26,14 @@ class _EstacionMapaState extends State<EstacionMapa> {
     return InkWell(
       hoverColor: Colors.purple,
       onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>visualizarEsquema(nombreEst: nombreEst, colorEst: Colors.red)));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>visualizarEsquema(nombreEst: nombreEst, colorEst: colEst,)));
       },
       child: Tooltip(
         message: nombreEst,
         child: Container(
           width: 10,
           height: 10,
-          color: Colors.amber,   
+          //color: Colors.amber,   
         ),
       ),
     );

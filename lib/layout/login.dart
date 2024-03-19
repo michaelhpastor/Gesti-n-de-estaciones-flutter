@@ -161,40 +161,43 @@ void mostrarToast(BuildContext context, String mensaje) {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                    child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStatePropertyAll(
-                                Color.fromARGB(255, 227, 27, 35)),
-                            minimumSize:
-                                MaterialStatePropertyAll(Size(150, 50))),
-                        onPressed: () {
-                          String userValue = usuario.text;
-
-                          // Verificar el valor del usuario y realizar la navegación
-                          if (userValue == "1") {
-                            // Navegar a la vista X
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => BusquedaEstaciones(),
-                              ),
-                            );
-                          } else if (userValue == "2") {
-                            // Navegar a la otra vista
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => menuEditor(),
-                              ),
-                            );
-                          } else {
-                            mostrarToast(context, "ingresa '1' o '2' en usuario");
-                          }
-                        },
-                        child: Text(
-                          'Ingresar',
-                          style: TextStyle(color: Colors.white, fontSize: 15),
-                        )),
+                    child: Tooltip(
+                      message: 'En usuario: 1 para la vista normal, 2 vista de editor',
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStatePropertyAll(
+                                  Color.fromARGB(255, 227, 27, 35)),
+                              minimumSize:
+                                  MaterialStatePropertyAll(Size(150, 50))),
+                          onPressed: () {
+                            String userValue = usuario.text;
+                      
+                            // Verificar el valor del usuario y realizar la navegación
+                            if (userValue == "1") {
+                              // Navegar a la vista X
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => BusquedaEstaciones(),
+                                ),
+                              );
+                            } else if (userValue == "2") {
+                              // Navegar a la otra vista
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => menuEditor(),
+                                ),
+                              );
+                            } else {
+                              mostrarToast(context, "ingresa '1' o '2' en usuario");
+                            }
+                          },
+                          child: Text(
+                            'Ingresar',
+                            style: TextStyle(color: Colors.white, fontSize: 15),
+                          )),
+                    ),
                   )
                 ],
               )),
