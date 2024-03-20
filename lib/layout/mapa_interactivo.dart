@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:trasmi/layout/Busqueda_Estaciones.dart';
 import 'package:trasmi/layout/login.dart';
@@ -18,6 +20,11 @@ class MapaInteractivo extends StatefulWidget {
 }
 
 class _MapaInteractivoState extends State<MapaInteractivo> {
+
+  
+
+
+
   late int numVista;
 
   @override
@@ -209,7 +216,12 @@ class _MapaInteractivoState extends State<MapaInteractivo> {
                         bottomLeft: Radius.circular(10),
                         bottomRight: Radius.circular(10)),
                     image: DecorationImage(
-                        image: AssetImage('assets/imagenes/mapaTrasmi.png'))),
+                        image: AssetImage('assets/imagenes/MapaTrasmi2.jpg'),
+                        fit: BoxFit.cover
+                        )),
+                    child: CustomPaint(
+                      painter: MyPainter(),
+                    ),
               ),
               Positioned(
                   left: MediaQuery.of(context).size.width * 0.768,
@@ -465,5 +477,34 @@ class _MapaInteractivoState extends State<MapaInteractivo> {
             ]),
           )),
     );
+  }
+}
+
+class MyPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.black
+      ..strokeWidth = 2
+      ..style = PaintingStyle.stroke;
+
+    final path = Path()
+      ..moveTo(size.width*0.058,size.height*0.375)
+      ..lineTo(size.width*0.417, size.height*0.227)
+      ..lineTo(size.width*0.419,size.height*0.235)
+      ..lineTo(size.width*0.061,size.height*0.3819)
+
+      ..close();
+    
+    /* final radians = 20 * (pi / 180); // Convertir grados a radianes
+    final rotationMatrix = Matrix4.rotationZ(radians);
+    canvas.transform(rotationMatrix.storage); */
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }
