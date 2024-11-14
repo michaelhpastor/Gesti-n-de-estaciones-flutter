@@ -6,6 +6,7 @@ import 'package:trasmi/layout/esquema_optimizado.dart';
 import 'package:trasmi/layout/layout.dart';
 import 'package:trasmi/layout/login.dart';
 import 'package:trasmi/layout/mapa_interactivo.dart';
+import 'package:trasmi/layout/mapa_interactivo2.dart';
 import 'package:trasmi/layout/vista_Editor.dart';
 import 'package:desktop_window/desktop_window.dart';
 
@@ -36,7 +37,8 @@ class MyApp extends StatelessWidget {
         '/busqueda': (BuildContext context) => const BusquedaEstaciones(),
         '/editor': (BuildContext context) => const menuEditor(),
         '/vista_esquemas': (BuildContext context) => const vistaEsquema(),
-        '/mapa_interactivo': (BuildContext context) => const MapaInteractivo(num: 1)
+        '/mapa_interactivo': (BuildContext context) => const MapaInteractivo(num: 1),
+        '/mapa_interactivo2': (BuildContext context) => const mapaInteractivo2(num: 1)
       },
     );
   }

@@ -216,24 +216,27 @@ class _MapaInteractivoState extends State<MapaInteractivo> {
                         bottomLeft: Radius.circular(10),
                         bottomRight: Radius.circular(10)),
                     image: DecorationImage(
-                        image: AssetImage('assets/imagenes/MapaTrasmi2.jpg'),
-                        fit: BoxFit.cover
+                      //'assets/imagenes/MapaTrasmi2.jpg'
+                      //'assets/imagenes/mapaTrasmi.png'
+                        image: AssetImage('assets/imagenes/mapaTrasmi.png'),
+                        //fit: BoxFit.cover
                         )),
                     child: CustomPaint(
-                      painter: MyPainter(),
+                      //painter: MyPainter(),
                     ),
               ),
               Positioned(
                   left: MediaQuery.of(context).size.width * 0.768,
                   top: MediaQuery.of(context).size.height * 0.022,
                   child: Tooltip(
-                    message: "Estaciones 40/144",
+                    message: "Estaciones 144/144",
                     child: Container(
                       width: 52,
                       height: 53,
                       //color: Colors.amber,
                     ),
                   )),
+              //--------------------------------------------------- Troncal norte ----------------------------------------------
               Positioned(
                   left: MediaQuery.of(context).size.width * 0.046,
                   top: MediaQuery.of(context).size.height * 0.215,
@@ -336,6 +339,7 @@ class _MapaInteractivoState extends State<MapaInteractivo> {
                   child: EstacionMapa(
                     nombreEstacion: 'Héroes', colEst: cambiocolor("B")
                   )),
+              //---------------------------------------------- Troncal Caracas --------------------------------------------
               Positioned(
                   left: MediaQuery.of(context).size.width * 0.34,
                   top: MediaQuery.of(context).size.height * 0.215,
@@ -420,6 +424,7 @@ class _MapaInteractivoState extends State<MapaInteractivo> {
                   child: EstacionMapa(
                     nombreEstacion: 'Tercer\nMilenio', colEst: cambiocolor("A")
                   )),
+              //--------------------------------------------- Troncal Caracas Sur -------------------------------------------
               Positioned(
                   left: MediaQuery.of(context).size.width * 0.585,
                   top: MediaQuery.of(context).size.height * 0.215,
@@ -474,13 +479,682 @@ class _MapaInteractivoState extends State<MapaInteractivo> {
                   child: EstacionMapa(
                     nombreEstacion: 'Santa Lucia', colEst: cambiocolor("H")
                   )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.725,
+                  top: MediaQuery.of(context).size.height * 0.363,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Socorro', colEst: cambiocolor("H")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.741,
+                  top: MediaQuery.of(context).size.height * 0.363,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Consuelo', colEst: cambiocolor("H")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.759,
+                  top: MediaQuery.of(context).size.height * 0.363,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Molinos', colEst: cambiocolor("H")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.781,
+                  top: MediaQuery.of(context).size.height * 0.363,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Portal Usme', colEst: cambiocolor("H")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.725,
+                  top: MediaQuery.of(context).size.height * 0.4,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Biblioteca', colEst: cambiocolor("H")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.737,
+                  top: MediaQuery.of(context).size.height * 0.422,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Parque', colEst: cambiocolor("H")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.742,
+                  top: MediaQuery.of(context).size.height * 0.485,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Portal Tunal', colEst: cambiocolor("H")
+                  )),
+              //-------------------------------------------------------------- Troncal NQS -----------------------------------------
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.269,
+                  top: MediaQuery.of(context).size.height * 0.3,
+                  child: EstacionMapa(
+                    nombreEstacion: 'La Castellana', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.341,
+                  top: MediaQuery.of(context).size.height * 0.38,
+                  child: EstacionMapa(
+                    nombreEstacion: 'NQS Calle 75', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.362,
+                  top: MediaQuery.of(context).size.height * 0.38,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Avenida Chile', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.362,
+                  top: MediaQuery.of(context).size.height * 0.38,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Avenida Chile', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.382,
+                  top: MediaQuery.of(context).size.height * 0.38,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Simon Bolivar', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.402,
+                  top: MediaQuery.of(context).size.height * 0.38,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Coliseo', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.423,
+                  top: MediaQuery.of(context).size.height * 0.38,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Campin -\nU. Antonio Nariño', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.441,
+                  top: MediaQuery.of(context).size.height * 0.38,
+                  child: EstacionMapa(
+                    nombreEstacion: 'U. Nacional', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.464,
+                  top: MediaQuery.of(context).size.height * 0.38,
+                  child: EstacionMapa(
+                    nombreEstacion: 'AV. El \nDorado', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.506,
+                  top: MediaQuery.of(context).size.height * 0.38,
+                  child: EstacionMapa(
+                    nombreEstacion: 'CAD', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.523,
+                  top: MediaQuery.of(context).size.height * 0.38,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Paloquemao', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.543,
+                  top: MediaQuery.of(context).size.height * 0.38,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Ricaurte E', colEst: cambiocolor("B")
+                  )),
+              //------------------------------------------------------- Troncal sur -------------------------------------
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.58,
+                  top: MediaQuery.of(context).size.height * 0.38,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Comuneros', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.596,
+                  top: MediaQuery.of(context).size.height * 0.38,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Santa isabel', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.614,
+                  top: MediaQuery.of(context).size.height * 0.394,
+                  child: EstacionMapa(
+                    nombreEstacion: 'SENA', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.625,
+                  top: MediaQuery.of(context).size.height * 0.418,
+                  child: EstacionMapa(
+                    nombreEstacion: 'NQS-CL 30 S.', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.638,
+                  top: MediaQuery.of(context).size.height * 0.44,
+                  child: EstacionMapa(
+                    nombreEstacion: 'NQS-CL 38A S.', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.65,
+                  top: MediaQuery.of(context).size.height * 0.463,
+                  child: EstacionMapa(
+                    nombreEstacion: 'General Santander', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.658,
+                  top: MediaQuery.of(context).size.height * 0.48,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Alqueria', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.658,
+                  top: MediaQuery.of(context).size.height * 0.501,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Venecia', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.658,
+                  top: MediaQuery.of(context).size.height * 0.535,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Sevillana', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.658,
+                  top: MediaQuery.of(context).size.height * 0.57,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Madelena', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.658,
+                  top: MediaQuery.of(context).size.height * 0.605,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Perdomo', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.658,
+                  top: MediaQuery.of(context).size.height * 0.638,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Portal Del Sur', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.672,
+                  top: MediaQuery.of(context).size.height * 0.69,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Bosa', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.69,
+                  top: MediaQuery.of(context).size.height * 0.727,
+                  child: EstacionMapa(
+                    nombreEstacion: 'La Despensa', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.705,
+                  top: MediaQuery.of(context).size.height * 0.757,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Leon XIII', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.718,
+                  top: MediaQuery.of(context).size.height * 0.781,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Terreros Hospital C.V.', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.732,
+                  top: MediaQuery.of(context).size.height * 0.811,
+                  child: EstacionMapa(
+                    nombreEstacion: 'San Mateo', colEst: cambiocolor("B")
+                  )),
+              //--------------------------------------------------------------------- Troncal 80 ------------------------------------------
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.325,
+                  top: MediaQuery.of(context).size.height * 0.303,
+                  child: EstacionMapa(
+                    nombreEstacion: 'POLO', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.29,
+                  top: MediaQuery.of(context).size.height * 0.395,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Esc Militar', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.278,
+                  top: MediaQuery.of(context).size.height * 0.42,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Carrera 47', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.264,
+                  top: MediaQuery.of(context).size.height * 0.449,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Carrera 53', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.252,
+                  top: MediaQuery.of(context).size.height * 0.473,
+                  child: EstacionMapa(
+                    nombreEstacion: 'AV 68', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.24,
+                  top: MediaQuery.of(context).size.height * 0.496,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Ferias', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.228,
+                  top: MediaQuery.of(context).size.height * 0.52,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Boyaca', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.218,
+                  top: MediaQuery.of(context).size.height * 0.557,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Minuto De Dios', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.218,
+                  top: MediaQuery.of(context).size.height * 0.586,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Granja - Carrera 77', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.218,
+                  top: MediaQuery.of(context).size.height * 0.616,
+                  child: EstacionMapa(
+                    nombreEstacion: 'AV Cali', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.218,
+                  top: MediaQuery.of(context).size.height * 0.647,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Carrera 90', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.218,
+                  top: MediaQuery.of(context).size.height * 0.677,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Quirigua', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.218,
+                  top: MediaQuery.of(context).size.height * 0.709,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Portal 80', colEst: cambiocolor("B")
+                  )),
+              //----------------------------------------------------------------------- Troncal Suba ---------------------------------------------
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.265,
+                  top: MediaQuery.of(context).size.height * 0.381,
+                  child: EstacionMapa(
+                    nombreEstacion: 'San Martin', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.249,
+                  top: MediaQuery.of(context).size.height * 0.381,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Rio Negro', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.233,
+                  top: MediaQuery.of(context).size.height * 0.381,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Suba - CL 45', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.216,
+                  top: MediaQuery.of(context).size.height * 0.381,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Suba - CL 100', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.199,
+                  top: MediaQuery.of(context).size.height * 0.381,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Puentelargo', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.183,
+                  top: MediaQuery.of(context).size.height * 0.381,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Shaio', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.165,
+                  top: MediaQuery.of(context).size.height * 0.396,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Humedal Cordoba', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.155,
+                  top: MediaQuery.of(context).size.height * 0.42,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Niza - CL 127', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.142,
+                  top: MediaQuery.of(context).size.height * 0.442,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Suba - AV. Boyaca', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.138,
+                  top: MediaQuery.of(context).size.height * 0.467,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Gratamira', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.138,
+                  top: MediaQuery.of(context).size.height * 0.498,
+                  child: EstacionMapa(
+                    nombreEstacion: '21 Angeles', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.138,
+                  top: MediaQuery.of(context).size.height * 0.528,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Suba - TV 91', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.138,
+                  top: MediaQuery.of(context).size.height * 0.557,
+                  child: EstacionMapa(
+                    nombreEstacion: 'la Campiña', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.138,
+                  top: MediaQuery.of(context).size.height * 0.586,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Portal De Suba', colEst: cambiocolor("B")
+                  )),
+              //------------------------------------------------------------- Troncal el Dorado ---------------------------------------------
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.491,
+                  top: MediaQuery.of(context).size.height * 0.008,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Universidades', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.491,
+                  top: MediaQuery.of(context).size.height * 0.278,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Centro Memoria', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.491,
+                  top: MediaQuery.of(context).size.height * 0.325,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Plaza De La Democracia', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.464,
+                  top: MediaQuery.of(context).size.height * 0.445,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Ciudad Universitaria', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.45,
+                  top: MediaQuery.of(context).size.height * 0.482,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Corferias', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.435,
+                  top: MediaQuery.of(context).size.height * 0.519,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Quinta Paredes', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.424,
+                  top: MediaQuery.of(context).size.height * 0.552,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Gobernacion', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.424,
+                  top: MediaQuery.of(context).size.height * 0.589,
+                  child: EstacionMapa(
+                    nombreEstacion: 'CAN', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.424,
+                  top: MediaQuery.of(context).size.height * 0.626,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Salitre El Greco', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.424,
+                  top: MediaQuery.of(context).size.height * 0.665,
+                  child: EstacionMapa(
+                    nombreEstacion: 'El Tiempo Maloka', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.424,
+                  top: MediaQuery.of(context).size.height * 0.702,
+                  child: EstacionMapa(
+                    nombreEstacion: 'AV Rojas', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.424,
+                  top: MediaQuery.of(context).size.height * 0.738,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Normandia', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.424,
+                  top: MediaQuery.of(context).size.height * 0.775,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Modelia', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.424,
+                  top: MediaQuery.of(context).size.height * 0.818,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Portal El Dorado', colEst: cambiocolor("B")
+                  )),
+              //------------------------------------------------------------------------- Centro ---------------------------------------------
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.502,
+                  top: MediaQuery.of(context).size.height * 0.008,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Las Aguas', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.525,
+                  top: MediaQuery.of(context).size.height * 0.053,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Museo Del Oro', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.535,
+                  top: MediaQuery.of(context).size.height * 0.202,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Avenida Jimenez J', colEst: cambiocolor("B")
+                  )),
+              //----------------------------------------------------------------------- Troncal Americas -------------------------------------------
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.535,
+                  top: MediaQuery.of(context).size.height * 0.275,
+                  child: EstacionMapa(
+                    nombreEstacion: 'De La Sabana', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.535,
+                  top: MediaQuery.of(context).size.height * 0.32,
+                  child: EstacionMapa(
+                    nombreEstacion: 'San Facon - KR 22', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.535,
+                  top: MediaQuery.of(context).size.height * 0.365,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Ricaurte F', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.535,
+                  top: MediaQuery.of(context).size.height * 0.431,
+                  child: EstacionMapa(
+                    nombreEstacion: 'CDS - Carrera 32', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.535,
+                  top: MediaQuery.of(context).size.height * 0.458,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Zona Industrial', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.535,
+                  top: MediaQuery.of(context).size.height * 0.485,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Carrera 43', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.535,
+                  top: MediaQuery.of(context).size.height * 0.515,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Puente Aranda', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.542,
+                  top: MediaQuery.of(context).size.height * 0.544,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Americas -KR 53A', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.555,
+                  top: MediaQuery.of(context).size.height * 0.571,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Pradera', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.57,
+                  top: MediaQuery.of(context).size.height * 0.598,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Marsella', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.581,
+                  top: MediaQuery.of(context).size.height * 0.622,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Mundo Aventura', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.595,
+                  top: MediaQuery.of(context).size.height * 0.65,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Mandalay', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.6,
+                  top: MediaQuery.of(context).size.height * 0.682,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Banderas', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.6,
+                  top: MediaQuery.of(context).size.height * 0.717,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Transversal 86', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.602,
+                  top: MediaQuery.of(context).size.height * 0.75,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Biblioteca Tintal', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.621,
+                  top: MediaQuery.of(context).size.height * 0.75,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Patio Bonito', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.641,
+                  top: MediaQuery.of(context).size.height * 0.75,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Portal Americas', colEst: cambiocolor("B")
+                  )),
+              //---------------------------------------------------------------- Troncal 20 de julio -----------------------------------
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.473,
+                  top: MediaQuery.of(context).size.height * 0.108,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Museo Nacional', colEst: cambiocolor("A")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.5,
+                  top: MediaQuery.of(context).size.height * 0.108,
+                  child: EstacionMapa(
+                    nombreEstacion: 'San Diego', colEst: cambiocolor("A")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.521,
+                  top: MediaQuery.of(context).size.height * 0.108,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Las Nieves', colEst: cambiocolor("A")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.543,
+                  top: MediaQuery.of(context).size.height * 0.108,
+                  child: EstacionMapa(
+                    nombreEstacion: 'San Victorino', colEst: cambiocolor("A")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.579,
+                  top: MediaQuery.of(context).size.height * 0.108,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Bicentenario', colEst: cambiocolor("A")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.592,
+                  top: MediaQuery.of(context).size.height * 0.108,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Hospitales', colEst: cambiocolor("A")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.612,
+                  top: MediaQuery.of(context).size.height * 0.108,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Policarpa', colEst: cambiocolor("A")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.629,
+                  top: MediaQuery.of(context).size.height * 0.108,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Ciudad Jardin UAN', colEst: cambiocolor("A")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.649,
+                  top: MediaQuery.of(context).size.height * 0.108,
+                  child: EstacionMapa(
+                    nombreEstacion: 'AV. 1 Mayo', colEst: cambiocolor("A")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.666,
+                  top: MediaQuery.of(context).size.height * 0.108,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Country Sur', colEst: cambiocolor("A")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.688,
+                  top: MediaQuery.of(context).size.height * 0.108,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Portal 20 De Julio', colEst: cambiocolor("A")
+                  )),
+              //------------------------------------------------------------------------ ?? --------------------------------------------------
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.569,
+                  top: MediaQuery.of(context).size.height * 0.324,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Guatoque - Veraguas', colEst: cambiocolor("B")
+                  )),
+              Positioned(
+                  left: MediaQuery.of(context).size.width * 0.569,
+                  top: MediaQuery.of(context).size.height * 0.272,
+                  child: EstacionMapa(
+                    nombreEstacion: 'Tygua - San Jose', colEst: cambiocolor("B")
+                  )),   
             ]),
           )),
     );
   }
 }
 
-class MyPainter extends CustomPainter {
+/* class MyPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
@@ -492,6 +1166,7 @@ class MyPainter extends CustomPainter {
       ..moveTo(size.width*0.058,size.height*0.375)
       ..lineTo(size.width*0.417, size.height*0.227)
       ..lineTo(size.width*0.419,size.height*0.235)
+      
       ..lineTo(size.width*0.061,size.height*0.3819)
 
       ..close();
@@ -507,4 +1182,4 @@ class MyPainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return false;
   }
-}
+} */

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:trasmi/Estacion2.dart';
 import 'package:trasmi/layout/login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:trasmi/estacion.dart';
 import 'package:trasmi/layout/mapa_interactivo.dart';
+import 'package:trasmi/layout/mapa_interactivo2.dart';
 import 'package:trasmi/layout/visualizar_Esquema.dart';
 
 class BusquedaEstaciones extends StatefulWidget {
@@ -14,13 +16,13 @@ class BusquedaEstaciones extends StatefulWidget {
 }
 
 class _BusquedaState extends State<BusquedaEstaciones> {
-  Future<List<Estacion>> fetchEstaciones() async {
-    const url = 'http://127.0.0.1:5000/estaciones';
+  Future<List<Estacion2>> fetchEstaciones() async {
+    const url = 'http://127.0.0.1:8080/estaciones2';
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
-      return data.map((json) => Estacion.fromJson(json)).toList();
+      return data.map((json) => Estacion2.fromJson(json)).toList();
     } else {
       throw Exception('Error al cargar las estaciones');
     }
@@ -135,6 +137,13 @@ class _BusquedaState extends State<BusquedaEstaciones> {
               onTap: (){
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (context) => MapaInteractivo(num: 1)));
+              },
+            ),
+            ListTile(
+              title: Text('Mapa Interactivo BETA'),
+              onTap: (){
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => mapaInteractivo2(num: 1)));
               },
             ),
             ListTile(
@@ -270,7 +279,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                               Container(
                                 height: 400,
                                 width: 500,
-                                child: FutureBuilder<List<Estacion>>(
+                                child: FutureBuilder<List<Estacion2>>(
                                   future: fetchEstaciones(),
                                   builder: (context, snapshot) {
                                     if (snapshot.connectionState ==
@@ -289,7 +298,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                             Text('No hay estaciones disponibles.'),
                                       );
                                     } else{
-                                      List<Estacion> filteredEstaciones = snapshot
+                                      List<Estacion2> filteredEstaciones = snapshot
                                           .data!
                                           .where((estacion) => estacion.nombre
                                               .toLowerCase()
@@ -371,7 +380,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                                               child: Text(
                                                                 '${filteredEstaciones[index].nombre}',
                                                                 style: TextStyle(
-                                                                    fontSize: 20,
+                                                                    fontSize: 18,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold),
@@ -379,7 +388,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                                             ),
                                                           ),
                                                           Text(
-                                                              '${filteredEstaciones[index].ubicacion}')
+                                                              '${filteredEstaciones[index].zona}')
                                                         ],
                                                       ),
                                                     ),

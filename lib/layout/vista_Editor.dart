@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:trasmi/estacion.dart';
 import 'package:trasmi/layout/mapa_interactivo.dart';
+import 'package:trasmi/layout/mapa_interactivo2.dart';
 
 class menuEditor extends StatefulWidget {
   const menuEditor({super.key});
@@ -137,6 +138,13 @@ class _menuEditorState extends State<menuEditor> {
               onTap: () {
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (context) => MapaInteractivo(num: 2,)));
+              },
+            ),
+             ListTile(
+              title: Text('Mapa Interactivo BETA'),
+              onTap: (){
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => mapaInteractivo2(num: 2)));
               },
             ),
             ListTile(
