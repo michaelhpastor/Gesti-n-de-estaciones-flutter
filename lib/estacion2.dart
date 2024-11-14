@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class Estacion2 {
   String _nombre;
   String _troncal;

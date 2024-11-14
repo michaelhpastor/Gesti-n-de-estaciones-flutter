@@ -4,11 +4,8 @@ import 'package:trasmi/layout/Busqueda_Estaciones.dart';
 import 'package:trasmi/layout/login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:trasmi/estacion.dart';
 import 'package:trasmi/layout/vista_Editor.dart';
-import 'package:trasmi/layout/visualizar_Esquema.dart';
 import 'package:trasmi/layout/widget_estacion2.dart';
-import 'package:trasmi/layout/widget_estaciones.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 

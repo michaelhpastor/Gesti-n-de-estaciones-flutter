@@ -3,7 +3,6 @@ import 'package:trasmi/Estacion2.dart';
 import 'package:trasmi/layout/login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:trasmi/estacion.dart';
 import 'package:trasmi/layout/mapa_interactivo.dart';
 import 'package:trasmi/layout/mapa_interactivo2.dart';
 import 'package:trasmi/layout/visualizar_Esquema.dart';

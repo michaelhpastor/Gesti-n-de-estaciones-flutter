@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
-import 'package:trasmi/estacion.dart';
 import 'package:trasmi/layout/visualizar_Esquema.dart';
 
 class widgetEst2 extends StatelessWidget {
