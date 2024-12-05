@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         '/': (BuildContext context) => const LogIn(),
         '/busqueda': (BuildContext context) => const BusquedaEstaciones(),
         '/editor': (BuildContext context) => const menuEditor(),
-        '/vista_esquemas': (BuildContext context) => const vistaEsquema(),
+        //'/vista_esquema': (BuildContext context) => const vistaEsquema(numVagones: 2),
         '/mapa_interactivo': (BuildContext context) => const MapaInteractivo(num: 1),
         '/mapa_interactivo2': (BuildContext context) => const mapaInteractivo2(num: 1)
       },

@@ -219,8 +219,11 @@ class _mapaInteractivo2State extends State<mapaInteractivo2> {
                             ),
                             rotate: true,
                             child: widgetEst2(
+                              zona: estacion.zona,
                               estacion: estacion.nombre,
                               color: estacion.troncal,
+                              numVagones: estacion.numVagones.toInt(),
+                              secuencia: estacion.secuencia
                             ),
                           );
                         }).toList();

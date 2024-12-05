@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trasmi/Estacion2.dart';
+import 'package:trasmi/layout/controlador_esquema.dart';
+import 'package:trasmi/layout/esquema_optimizado.dart';
 import 'package:trasmi/layout/login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -313,11 +315,16 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          visualizarEsquema(
+                                                          ContEsq(
+                                                            zona:
+                                                              filteredEstaciones[index].zona.toInt(),
                                                             nombreEst:
                                                                 '${filteredEstaciones[index].nombre}',
                                                             colorEst: Cambiocolor(
-                                                                '${filteredEstaciones[index].troncal}'),
+                                                                '${filteredEstaciones[index].troncal}'), 
+                                                            numVagones: 
+                                                                filteredEstaciones[index].numVagones.toInt(), 
+                                                            secuencia: '${filteredEstaciones[index].secuencia}',
                                                           )));
                                             },
                                             child: Container(

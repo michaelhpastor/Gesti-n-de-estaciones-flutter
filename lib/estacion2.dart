@@ -1,29 +1,37 @@
 class Estacion2 {
   String _nombre;
   String _troncal;
-  double _latitud; // Cambiar a double
+  double _latitud;
   double _longitud;
-  int _zona; // Cambiar a double
+  int _zona;
+  int _numVagones;
+  String _secuencia;
 
   Estacion2({
     required String nombre,
     required String troncal,
-    required double latitud, // Cambiar a double
+    required double latitud,
     required double longitud,
-    required int zona // Cambiar a double
+    required int zona,
+    required int numVagones, 
+    required String secuencia,
   })   : _nombre = nombre,
         _troncal = troncal,
         _latitud = latitud,
         _longitud = longitud,
-        _zona = zona;
+        _zona = zona,
+        _numVagones = numVagones,
+        _secuencia = secuencia;
 
   factory Estacion2.fromJson(Map<String, dynamic> json) {
     return Estacion2(
       nombre: json['nombre_estacion'],
-      troncal: json['Troncal'],
-      latitud: json['latitud_estacion'], // Convertir a double
+      troncal: json['troncal'],
+      latitud: json['latitud_estacion'],
       longitud: json['longitud_estacion'],
-      zona: json['zona'] // Convertir a double
+      zona: json['zona'],
+      numVagones: json['numero_vagones'],
+      secuencia: json['secuencia']
     );
   }
 
@@ -52,4 +60,15 @@ class Estacion2 {
   set zona(int value){
     _zona = value;
   }
+
+  int get numVagones => _numVagones;
+  set numVagones(int value){
+    _numVagones = value;
+  }
+
+  String get secuencia => _secuencia;
+  set secuencia(String value){
+    _secuencia = value;
+  }
+
 }

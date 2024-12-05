@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:trasmi/layout/controlador_esquema.dart';
+import 'package:trasmi/layout/esquema_optimizado.dart';
 import 'package:trasmi/layout/visualizar_Esquema.dart';
 
 class widgetEst2 extends StatelessWidget {
+  final int zona;
   final estacion;
   final color;
-  const widgetEst2({super.key, required this.estacion, required this.color});
+  final int numVagones;
+  final String secuencia;
+  const widgetEst2({super.key, required this.zona, required this.estacion, required this.color, required this.numVagones, required this.secuencia});
 
   Color cambiocolor(String t) {
     switch (t) {
@@ -48,6 +53,13 @@ class widgetEst2 extends StatelessWidget {
     }
   }
 
+    IconData obtenerIcono() {
+    if (secuencia == "PORTAL") {
+      return Icons.brightness_1; // Icono para PORTAL
+    } else {
+      return Icons.location_on; // Icono para SERIE o PARALELO
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +69,8 @@ class widgetEst2 extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => visualizarEsquema(
-                    nombreEst: estacion, colorEst: cambiocolor(color))));
+                builder: (context) => ContEsq(
+                    zona: zona, nombreEst: estacion, colorEst: cambiocolor(color), numVagones: numVagones, secuencia: secuencia)));
       },
       child: Container(
         child: Tooltip(
@@ -83,7 +95,7 @@ class widgetEst2 extends StatelessWidget {
               ),
             ],
           ),
-          child: Icon(Icons.location_on, size: 20, color: cambiocolor(color)),
+          child: Icon(obtenerIcono(), size: 20, color: cambiocolor(color)),
         ),
       ),
     ));

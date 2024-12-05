@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:trasmi/partes_estacion/pasarelas.dart';
 import 'package:trasmi/partes_estacion/vagon.dart';
 
-class vistaEsquema extends StatefulWidget {
+class vistaEsquemaParalelo extends StatefulWidget {
   final int zona;
-  final int numVagones;
+  final int numVagones; // Debe ser 4 o 6
   final String nombreEst;
   final Color colorEst;
-  const vistaEsquema({
+
+  const vistaEsquemaParalelo({
     super.key,
     required this.zona,
     required this.numVagones,
@@ -16,12 +17,45 @@ class vistaEsquema extends StatefulWidget {
   });
 
   @override
-  State<vistaEsquema> createState() => _vistaEsquemaState();
+  State<vistaEsquemaParalelo> createState() => _vistaEsquemaParaleloState();
 }
 
-class _vistaEsquemaState extends State<vistaEsquema> {
+class _vistaEsquemaParaleloState extends State<vistaEsquemaParalelo> {
   ScrollController _controller = ScrollController();
   double _zoomLevel = 1.0; // Nivel inicial de zoom
+
+  // Generar filas de vagones y pasarelas
+  List<Widget> _buildFila(int start, int count) {
+    List<Widget> fila = [];
+    for (int i = start; i < start + count; i++) {
+      // Padding izquierdo para el primer vagón de la fila
+      if (i == start) {
+        fila.add(
+          Padding(
+            padding: const EdgeInsets.only(left: 30),
+            child: Vagon(),
+          ),
+        );
+      } else if (i == start + count - 1) {
+        // Padding derecho para el último vagón de la fila
+        fila.add(
+          Padding(
+            padding: const EdgeInsets.only(right: 30),
+            child: Vagon(),
+          ),
+        );
+      } else {
+        // Vagones intermedios sin padding especial
+        fila.add(Vagon());
+      }
+
+      // Pasarelas entre vagones
+      if (i < start + count - 1) {
+        fila.add(Pasarelas());
+      }
+    }
+    return fila;
+  }
 
   // Métodos para manejar el zoom
   void _zoomIn() {
@@ -36,38 +70,14 @@ class _vistaEsquemaState extends State<vistaEsquema> {
     });
   }
 
-  List<Widget> _Esquema() {
-    List<Widget> esquema = [];
-    for (int i = 0; i < widget.numVagones; i++) {
-      // Padding para el primer y último vagón
-      if (i == 0) {
-        esquema.add(
-          Padding(
-            padding: const EdgeInsets.only(left: 30), // Padding izquierdo para el primer vagón
-            child: Vagon(),
-          ),
-        );
-      } else if (i == widget.numVagones - 1) {
-        esquema.add(
-          Padding(
-            padding: const EdgeInsets.only(right: 30), // Padding derecho para el último vagón
-            child: Vagon(),
-          ),
-        );
-      } else {
-        esquema.add(Vagon()); // Vagones intermedios sin padding especial
-      }
-
-      // Agregar pasarela si no es el último vagón
-      if (i < widget.numVagones - 1) {
-        esquema.add(Pasarelas());
-      }
-    }
-    return esquema;
-  }
-
   @override
   Widget build(BuildContext context) {
+    // Validar que numVagones sea 4 o 6
+    assert(widget.numVagones == 4 || widget.numVagones == 6,
+        'El número de vagones en paralelo debe ser 4 o 6.');
+
+    int filaCount = widget.numVagones ~/ 2; // Dividir en dos filas
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 70,
@@ -76,7 +86,7 @@ class _vistaEsquemaState extends State<vistaEsquema> {
         title: Row(
           children: [
             Expanded(
-              flex: 100, // Este ocupa el 95% del ancho
+              flex: 100,
               child: Container(
                 alignment: Alignment.center,
                 child: Padding(
@@ -113,12 +123,26 @@ class _vistaEsquemaState extends State<vistaEsquema> {
           Positioned.fill(
             child: SingleChildScrollView(
               controller: _controller,
-              scrollDirection: Axis.horizontal,
-              child: Transform.scale(
-                scale: _zoomLevel, // Aplicar nivel de zoom
-                alignment: Alignment.center,
-                child: Row(
-                  children: _Esquema(),
+              scrollDirection: Axis.vertical,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Transform.scale(
+                  scale: _zoomLevel, // Aplicar nivel de zoom
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Fila superior
+                      Row(
+                        children: _buildFila(0, filaCount),
+                      ),
+                      SizedBox(height: 20), // Espaciado entre filas
+                      // Fila inferior
+                      Row(
+                        children: _buildFila(filaCount, filaCount),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
