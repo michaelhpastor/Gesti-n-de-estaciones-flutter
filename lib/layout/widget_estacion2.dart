@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:trasmi/layout/controlador_esquema.dart';
-import 'package:trasmi/layout/esquema_optimizado.dart';
-import 'package:trasmi/layout/visualizar_Esquema.dart';
 
 class widgetEst2 extends StatelessWidget {
   final int zona;

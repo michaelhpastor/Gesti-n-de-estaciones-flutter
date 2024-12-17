@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:trasmi/Estacion2.dart';
 import 'package:trasmi/layout/controlador_esquema.dart';
-import 'package:trasmi/layout/esquema_optimizado.dart';
 import 'package:trasmi/layout/login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:trasmi/layout/mapa_interactivo.dart';
 import 'package:trasmi/layout/mapa_interactivo2.dart';
-import 'package:trasmi/layout/visualizar_Esquema.dart';
 
 class BusquedaEstaciones extends StatefulWidget {
   const BusquedaEstaciones({super.key});
@@ -33,40 +31,40 @@ class _BusquedaState extends State<BusquedaEstaciones> {
   Color Cambiocolor(String t) {
     switch (t) {
       case "A":
-        return Color.fromARGB(255, 32, 65, 154);
+        return const Color.fromARGB(255, 32, 65, 154);
 
       case "B":
-        return Color.fromARGB(255, 122, 193, 67);
+        return const Color.fromARGB(255, 122, 193, 67);
 
       case "C":
-        return Color.fromARGB(255, 253, 187, 48);
+        return const Color.fromARGB(255, 253, 187, 48);
 
       case "D":
-        return Color.fromARGB(255, 122, 104, 174);
+        return const Color.fromARGB(255, 122, 104, 174);
 
       case "E":
-        return Color.fromARGB(255, 171, 101, 13);
+        return const Color.fromARGB(255, 171, 101, 13);
 
       case "F":
-        return Color.fromARGB(255, 227, 27, 35);
+        return const Color.fromARGB(255, 227, 27, 35);
 
       case "G":
-        return Color.fromARGB(255, 0, 164, 228);
+        return const Color.fromARGB(255, 0, 164, 228);
 
       case "H":
-        return Color.fromARGB(255, 246, 137, 31);
+        return const Color.fromARGB(255, 246, 137, 31);
 
       case "J":
-        return Color.fromARGB(255, 221, 155, 165);
+        return const Color.fromARGB(255, 221, 155, 165);
 
       case "K":
-        return Color.fromARGB(255, 207, 171, 122);
+        return const Color.fromARGB(255, 207, 171, 122);
 
       case "L":
-        return Color.fromARGB(255, 0, 170, 166);
+        return const Color.fromARGB(255, 0, 170, 166);
 
       case "M":
-        return Color.fromARGB(255, 162, 25, 132);
+        return const Color.fromARGB(255, 162, 25, 132);
       default:
         return Colors.grey;
     }
@@ -79,7 +77,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 70,
-        backgroundColor: Color.fromARGB(255, 227, 27, 35),
+        backgroundColor: const Color.fromARGB(255, 227, 27, 35),
         titleSpacing: 0.0,
         title: Row(
           children: [
@@ -88,8 +86,8 @@ class _BusquedaState extends State<BusquedaEstaciones> {
               child: Container(
                 //color: Colors.green,
                 alignment: Alignment.center,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+                child: const Padding(
+                  padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
                   child: Text(
                     'Sistema de gestión de esquemas de estaciones',
                     style: TextStyle(
@@ -111,7 +109,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                 )),
           ],
         ),
-        shape: Border(
+        shape: const Border(
             bottom: BorderSide(color: Colors.black, width: 1.0),
             top: BorderSide(color: Colors.black, width: 1.0)),
       ),
@@ -123,7 +121,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
           children: [
             Container(
               height: 80,
-              child: DrawerHeader(
+              child: const DrawerHeader(
                 decoration: BoxDecoration(
                   color: Color.fromARGB(255, 227, 27, 35),
                 ),
@@ -134,21 +132,21 @@ class _BusquedaState extends State<BusquedaEstaciones> {
               ),
             ),
             ListTile(
-              title: Text('Mapa Interactivo'),
+              title: const Text('Mapa Interactivo'),
               onTap: (){
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (context) => MapaInteractivo(num: 1)));
               },
             ),
             ListTile(
-              title: Text('Mapa Interactivo BETA'),
+              title: const Text('Mapa Interactivo BETA'),
               onTap: (){
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (context) => mapaInteractivo2(num: 1)));
               },
             ),
             ListTile(
-              title: Text('Cerrar sesion'),
+              title: const Text('Cerrar sesion'),
               onTap: () {
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (context) => LogIn()));
@@ -163,7 +161,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
         height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(
+            image: const AssetImage(
               'assets/imagenes/Trasmi.png',
             ),
             fit: BoxFit.cover,
@@ -183,15 +181,15 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                 height: 49,
                 decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.8),
-                    border: Border(
+                    border: const Border(
                         bottom: BorderSide(color: Colors.black, width: 1.0),
                         top: BorderSide(color: Colors.black, width: 1.0),
                         left: BorderSide(color: Colors.black, width: 1.0),
                         right: BorderSide(color: Colors.black, width: 1.0)),
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(10),
                         topRight: Radius.circular(10))),
-                child: Center(
+                child: const Center(
                     child: Text('Visualizar esquema',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold))),
@@ -199,7 +197,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
               Container(
                   width: MediaQuery.of(context).size.width / 1.2,
                   height: MediaQuery.of(context).size.height / 1.4,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       border: Border(
                           bottom: BorderSide(color: Colors.black, width: 1.0),
@@ -225,11 +223,11 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                     child: Container(
                                       width: 250,
                                       height: 50,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           color: Colors.red,
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(10))),
-                                      child: Center(
+                                      child: const Center(
                                         child: Text(
                                           'Seleccione la estación',
                                           style: TextStyle(
@@ -252,7 +250,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                             fillColor: Colors.white,
                                             hintText: 'Buscar',
                                             contentPadding:
-                                                EdgeInsets.symmetric(
+                                                const EdgeInsets.symmetric(
                                                     vertical: 10.0,
                                                     horizontal: 10),
                                             border: OutlineInputBorder(
@@ -285,7 +283,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                   builder: (context, snapshot) {
                                     if (snapshot.connectionState ==
                                         ConnectionState.waiting) {
-                                      return Center(
+                                      return const Center(
                                         child: CircularProgressIndicator(),
                                       );
                                     } else if (snapshot.hasError) {
@@ -294,7 +292,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                       );
                                     } else if (!snapshot.hasData ||
                                         snapshot.data!.isEmpty) {
-                                      return Center(
+                                      return const Center(
                                         child:
                                             Text('No hay estaciones disponibles.'),
                                       );
@@ -332,7 +330,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                                     color: Cambiocolor(
                                                             '${filteredEstaciones[index].troncal}')
                                                         .withOpacity(0.5),
-                                                    border: Border(
+                                                    border: const Border(
                                                       bottom: BorderSide(
                                                           color: Colors.black,
                                                           width: 1.0),
@@ -346,7 +344,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                                           color: Colors.black,
                                                           width: 1.0),
                                                     ),
-                                                    borderRadius: BorderRadius.all(
+                                                    borderRadius: const BorderRadius.all(
                                                         Radius.circular(10))),
                                                 height: 70,
                                                 child: Column(
@@ -369,7 +367,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                                               child: Center(
                                                                 child: Text(
                                                                   '${filteredEstaciones[index].troncal}',
-                                                                  style: TextStyle(
+                                                                  style: const TextStyle(
                                                                       fontSize: 20,
                                                                       fontWeight:
                                                                           FontWeight
@@ -385,7 +383,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                                             child: Center(
                                                               child: Text(
                                                                 '${filteredEstaciones[index].nombre}',
-                                                                style: TextStyle(
+                                                                style: const TextStyle(
                                                                     fontSize: 18,
                                                                     fontWeight:
                                                                         FontWeight
@@ -408,7 +406,7 @@ class _BusquedaState extends State<BusquedaEstaciones> {
                                                             color: Cambiocolor(
                                                                 '${filteredEstaciones[index].troncal}'),
                                                             borderRadius:
-                                                                BorderRadius.only(
+                                                                const BorderRadius.only(
                                                                     bottomLeft: Radius
                                                                         .circular(
                                                                             10),

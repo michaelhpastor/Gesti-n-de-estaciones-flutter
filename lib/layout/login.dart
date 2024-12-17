@@ -24,7 +24,7 @@ void mostrarToast(BuildContext context, String mensaje) {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text('OK'),
+            child: const Text('OK'),
           ),
         ],
       );
@@ -47,8 +47,8 @@ void mostrarToast(BuildContext context, String mensaje) {
               child: Container(
                 //color: Colors.green,
                 alignment: Alignment.center,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+                child: const Padding(
+                  padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
                   child: Text(
                     'Sistema de gestión de esquemas de estaciones',
                     style: TextStyle(
@@ -70,7 +70,7 @@ void mostrarToast(BuildContext context, String mensaje) {
                 )),
           ],
         ),
-        shape: Border(
+        shape: const Border(
             bottom: BorderSide(color: Colors.black, width: 1.0),
             top: BorderSide(color: Colors.black, width: 1.0)),
       ),
@@ -79,7 +79,7 @@ void mostrarToast(BuildContext context, String mensaje) {
         height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(
+            image: const AssetImage(
               'assets/imagenes/Trasmi.png',
             ),
             fit: BoxFit.cover,
@@ -95,7 +95,7 @@ void mostrarToast(BuildContext context, String mensaje) {
               height: MediaQuery.of(context).size.height / 1.4,
               decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.8),
-                  border: Border(
+                  border: const Border(
                       bottom: BorderSide(color: Colors.black, width: 1.0),
                       top: BorderSide(color: Colors.black, width: 1.0),
                       left: BorderSide(color: Colors.black, width: 1.0),
@@ -108,10 +108,10 @@ void mostrarToast(BuildContext context, String mensaje) {
                     child: Container(
                       width: MediaQuery.of(context).size.width / 6,
                       height: MediaQuery.of(context).size.height / 14,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Color.fromARGB(255, 227, 27, 35),
                           borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           "Bienvenido",
                           style: TextStyle(
@@ -139,7 +139,7 @@ void mostrarToast(BuildContext context, String mensaje) {
                           filled: true,
                           fillColor: Colors.white,
                           hintText: 'Usuario',
-                          contentPadding: EdgeInsets.symmetric(
+                          contentPadding: const EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 10),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
@@ -153,7 +153,7 @@ void mostrarToast(BuildContext context, String mensaje) {
                           filled: true,
                           fillColor: Colors.white,
                           hintText: 'Contraseña',
-                          contentPadding: EdgeInsets.symmetric(
+                          contentPadding: const EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 10),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
@@ -164,7 +164,7 @@ void mostrarToast(BuildContext context, String mensaje) {
                     child: Tooltip(
                       message: 'En usuario: 1 para la vista normal, 2 vista de editor',
                       child: ElevatedButton(
-                          style: ButtonStyle(
+                          style: const ButtonStyle(
                               backgroundColor: MaterialStatePropertyAll(
                                   Color.fromARGB(255, 227, 27, 35)),
                               minimumSize:
@@ -178,7 +178,7 @@ void mostrarToast(BuildContext context, String mensaje) {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => BusquedaEstaciones(),
+                                  builder: (context) => const BusquedaEstaciones(),
                                 ),
                               );
                             } else if (userValue == "2") {
@@ -186,14 +186,14 @@ void mostrarToast(BuildContext context, String mensaje) {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => menuEditor(),
+                                  builder: (context) => const menuEditor(),
                                 ),
                               );
                             } else {
                               mostrarToast(context, "ingresa '1' o '2' en usuario");
                             }
                           },
-                          child: Text(
+                          child: const Text(
                             'Ingresar',
                             style: TextStyle(color: Colors.white, fontSize: 15),
                           )),

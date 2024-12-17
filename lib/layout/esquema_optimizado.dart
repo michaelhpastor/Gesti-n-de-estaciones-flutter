@@ -42,15 +42,15 @@ class _vistaEsquemaState extends State<vistaEsquema> {
       // Padding para el primer y último vagón
       if (i == 0) {
         esquema.add(
-          Padding(
-            padding: const EdgeInsets.only(left: 30), // Padding izquierdo para el primer vagón
+          const Padding(
+            padding: EdgeInsets.only(left: 30), // Padding izquierdo para el primer vagón
             child: Vagon(),
           ),
         );
       } else if (i == widget.numVagones - 1) {
         esquema.add(
-          Padding(
-            padding: const EdgeInsets.only(right: 30), // Padding derecho para el último vagón
+          const Padding(
+            padding: EdgeInsets.only(right: 30), // Padding derecho para el último vagón
             child: Vagon(),
           ),
         );
@@ -83,7 +83,7 @@ class _vistaEsquemaState extends State<vistaEsquema> {
                   padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
                   child: Text(
                     widget.nombreEst,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -102,7 +102,7 @@ class _vistaEsquemaState extends State<vistaEsquema> {
             ),
           ],
         ),
-        shape: Border(
+        shape: const Border(
           bottom: BorderSide(color: Colors.black, width: 1.0),
           top: BorderSide(color: Colors.black, width: 1.0),
         ),
@@ -132,13 +132,13 @@ class _vistaEsquemaState extends State<vistaEsquema> {
                 FloatingActionButton(
                   heroTag: "zoomIn",
                   onPressed: _zoomIn,
-                  child: Icon(Icons.add),
+                  child: const Icon(Icons.add),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 FloatingActionButton(
                   heroTag: "zoomOut",
                   onPressed: _zoomOut,
-                  child: Icon(Icons.remove),
+                  child: const Icon(Icons.remove),
                 ),
               ],
             ),

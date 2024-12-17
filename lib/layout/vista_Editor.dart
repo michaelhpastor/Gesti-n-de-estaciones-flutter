@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:trasmi/estacion2.dart';
 import 'package:trasmi/layout/editar_esquema.dart';
 import 'package:trasmi/layout/login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:trasmi/estacion.dart';
 import 'package:trasmi/layout/mapa_interactivo.dart';
 import 'package:trasmi/layout/mapa_interactivo2.dart';
 
@@ -16,13 +16,13 @@ class menuEditor extends StatefulWidget {
 
 class _menuEditorState extends State<menuEditor> {
 
-  Future<List<Estacion>> fetchEstaciones() async {
-    const url = 'http://127.0.0.1:5000/estaciones';
+  Future<List<Estacion2>> fetchEstaciones() async {
+    const url = 'http://127.0.0.1:8080/estaciones2';
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
-      return data.map((json) => Estacion.fromJson(json)).toList();
+      return data.map((json) => Estacion2.fromJson(json)).toList();
     } else {
       throw Exception('Error al cargar las estaciones');
     }
@@ -33,40 +33,40 @@ class _menuEditorState extends State<menuEditor> {
 
     switch(t){
       case "A":
-        return Color.fromARGB(255, 32, 65, 154);
+        return const Color.fromARGB(255, 32, 65, 154);
 
       case "B":
-        return Color.fromARGB(255, 122, 193, 167);
+        return const Color.fromARGB(255, 122, 193, 167);
 
       case "C":
-        return Color.fromARGB(255, 253, 187, 48);
+        return const Color.fromARGB(255, 253, 187, 48);
 
       case "D":
-        return Color.fromARGB(255, 122, 104, 174);
+        return const Color.fromARGB(255, 122, 104, 174);
 
       case "E":
-        return Color.fromARGB(255, 171, 101, 13);
+        return const Color.fromARGB(255, 171, 101, 13);
 
       case "F":
-        return Color.fromARGB(255, 227, 27, 35);
+        return const Color.fromARGB(255, 227, 27, 35);
 
       case "G":
-        return Color.fromARGB(255, 0, 164, 228);
+        return const Color.fromARGB(255, 0, 164, 228);
 
       case "H":
-        return Color.fromARGB(255, 246, 137, 31);
+        return const Color.fromARGB(255, 246, 137, 31);
 
       case "J":
-        return Color.fromARGB(255, 221, 155, 165);
+        return const Color.fromARGB(255, 221, 155, 165);
 
       case "K":
-        return Color.fromARGB(255, 207, 171, 122);
+        return const Color.fromARGB(255, 207, 171, 122);
 
       case "L":
-        return Color.fromARGB(255, 0, 170, 166);
+        return const Color.fromARGB(255, 0, 170, 166);
 
       case "M":
-        return Color.fromARGB(255, 162, 25, 132);
+        return const Color.fromARGB(255, 162, 25, 132);
       default:
         return Colors.grey;
     }
@@ -88,8 +88,8 @@ class _menuEditorState extends State<menuEditor> {
               child: Container(
                 //color: Colors.green,
                 alignment: Alignment.center,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+                child: const Padding(
+                  padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
                   child: Text(
                     'Sistema de gestión de esquemas de estaciones',
                     style: TextStyle(
@@ -111,7 +111,7 @@ class _menuEditorState extends State<menuEditor> {
                 )),
           ],
         ),
-        shape: Border(
+        shape: const Border(
             bottom: BorderSide(color: Colors.black, width: 1.0),
             top: BorderSide(color: Colors.black, width: 1.0)),
       ),
@@ -123,7 +123,7 @@ class _menuEditorState extends State<menuEditor> {
           children: [
             Container(
               height: 80,
-              child: DrawerHeader(
+              child: const DrawerHeader(
                 decoration: BoxDecoration(
                   color: Color.fromARGB(255, 227, 27, 35),
                 ),
@@ -134,21 +134,21 @@ class _menuEditorState extends State<menuEditor> {
               ),
             ),
             ListTile(
-              title: Text('Mapa interactivo'),
+              title: const Text('Mapa interactivo'),
               onTap: () {
                 Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => MapaInteractivo(num: 2,)));
+                    context, MaterialPageRoute(builder: (context) => const MapaInteractivo(num: 2,)));
               },
             ),
              ListTile(
-              title: Text('Mapa Interactivo BETA'),
+              title: const Text('Mapa Interactivo BETA'),
               onTap: (){
                 Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => mapaInteractivo2(num: 2)));
+                    context, MaterialPageRoute(builder: (context) => const mapaInteractivo2(num: 2)));
               },
             ),
             ListTile(
-              title: Text('Cerrar sesion'),
+              title: const Text('Cerrar sesion'),
               onTap: () {
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (context) => LogIn()));
@@ -163,7 +163,7 @@ class _menuEditorState extends State<menuEditor> {
         height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(
+            image: const AssetImage(
               'assets/imagenes/Trasmi.png',
             ),
             fit: BoxFit.cover,
@@ -185,7 +185,7 @@ class _menuEditorState extends State<menuEditor> {
                     child: Container(
                       width: (MediaQuery.of(context).size.width / 1.2)/4,
                       height: 49,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           border: Border(
                               bottom: BorderSide(color: Colors.black, width: 1.0),
@@ -195,7 +195,7 @@ class _menuEditorState extends State<menuEditor> {
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10))),
-                      child: Center(
+                      child: const Center(
                           child: Text('Visualizar esquema',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold))),
@@ -206,7 +206,7 @@ class _menuEditorState extends State<menuEditor> {
                     child: Container(
                       width: (MediaQuery.of(context).size.width / 1.2)/4,
                       height: 49,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           border: Border(
                               bottom: BorderSide(color: Colors.black, width: 1.0),
@@ -216,7 +216,7 @@ class _menuEditorState extends State<menuEditor> {
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10))),
-                      child: Center(
+                      child: const Center(
                           child: Text('Editar Esquemas',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold))),
@@ -227,7 +227,7 @@ class _menuEditorState extends State<menuEditor> {
                     child: Container(
                       width: (MediaQuery.of(context).size.width / 1.2)/4,
                       height: 49,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           border: Border(
                               bottom: BorderSide(color: Colors.black, width: 1.0),
@@ -237,7 +237,7 @@ class _menuEditorState extends State<menuEditor> {
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10))),
-                      child: Center(
+                      child: const Center(
                           child: Text('Visualizar matriz de distancia',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold))),
@@ -248,7 +248,7 @@ class _menuEditorState extends State<menuEditor> {
                     child: Container(
                       width: (MediaQuery.of(context).size.width / 1.2)/4,
                       height: 49,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           border: Border(
                               bottom: BorderSide(color: Colors.black, width: 1.0),
@@ -258,7 +258,7 @@ class _menuEditorState extends State<menuEditor> {
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10))),
-                      child: Center(
+                      child: const Center(
                           child: Text('Visualizar BH',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold))),
@@ -269,7 +269,7 @@ class _menuEditorState extends State<menuEditor> {
               Container(
                   width: MediaQuery.of(context).size.width / 1.2,
                   height: MediaQuery.of(context).size.height / 1.4,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       border: Border(
                           bottom: BorderSide(color: Colors.black, width: 1.0),
@@ -294,11 +294,11 @@ class _menuEditorState extends State<menuEditor> {
                                     child: Container(
                                       width: 250,
                                       height: 50,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           color: Colors.red,
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(10))),
-                                      child: Center(
+                                      child: const Center(
                                         child: Text(
                                           'Seleccione la estación',
                                           style: TextStyle(
@@ -317,7 +317,7 @@ class _menuEditorState extends State<menuEditor> {
                                             fillColor: Colors.white,
                                             hintText: 'Buscar',
                                             contentPadding:
-                                                EdgeInsets.symmetric(
+                                                const EdgeInsets.symmetric(
                                                     vertical: 10.0,
                                                     horizontal: 10),
                                             border: OutlineInputBorder(
@@ -342,7 +342,7 @@ class _menuEditorState extends State<menuEditor> {
                           child: Container(
                             height: 400,
                             width: 500,
-                            child: FutureBuilder<List<Estacion>>(
+                            child: FutureBuilder<List<Estacion2>>(
                               future: fetchEstaciones(),
                               builder: (context, snapshot) {
                                 if (snapshot.hasData) {
@@ -358,7 +358,7 @@ class _menuEditorState extends State<menuEditor> {
                                         child: Container(
                                             decoration: BoxDecoration(
                                                 color: Cambiocolor('${snapshot.data![index].troncal}').withOpacity(0.5),
-                                                border: Border(
+                                                border: const Border(
                                                     bottom: BorderSide(
                                                         color: Colors.black,
                                                         width: 1.0),
@@ -371,7 +371,7 @@ class _menuEditorState extends State<menuEditor> {
                                                     right: BorderSide(
                                                         color: Colors.black,
                                                         width: 1.0),),
-                                                borderRadius: BorderRadius.all(Radius.circular(10))
+                                                borderRadius: const BorderRadius.all(Radius.circular(10))
                                             ),
                                             height: 70,
                                             child: Column(
@@ -389,7 +389,7 @@ class _menuEditorState extends State<menuEditor> {
                                                           child: Center(
                                                             child: Text(
                                                                 '${snapshot.data![index].troncal}',
-                                                                style: TextStyle(
+                                                                style: const TextStyle(
                                                                   fontSize: 20,
                                                                   fontWeight: FontWeight.bold,
                                                                   color: Colors.white
@@ -403,7 +403,7 @@ class _menuEditorState extends State<menuEditor> {
                                                         child: Center(
                                                           child: Text(
                                                               '${snapshot.data![index].nombre}',
-                                                              style: TextStyle(
+                                                              style: const TextStyle(
                                                                 fontSize: 20,
                                                                 fontWeight: FontWeight.bold
                                                               ),
@@ -411,7 +411,7 @@ class _menuEditorState extends State<menuEditor> {
                                                         ),
                                                       ),
                                                       Text(
-                                                          '${snapshot.data![index].ubicacion}')
+                                                          '${snapshot.data![index].zona}')
                                                     ],
                                                   ),
                                                 ),
@@ -421,7 +421,7 @@ class _menuEditorState extends State<menuEditor> {
                                                       height: 18,  
                                                       decoration: BoxDecoration(
                                                         color: Cambiocolor('${snapshot.data![index].troncal}'),
-                                                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
+                                                        borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
                                                       ),
                                                       ),
                                                 )
@@ -435,7 +435,7 @@ class _menuEditorState extends State<menuEditor> {
                                     child: Text('Error: ${snapshot.error}'),
                                   );
                                 } else {
-                                  return Center(
+                                  return const Center(
                                     child: CircularProgressIndicator(),
                                   );
                                 }

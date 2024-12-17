@@ -31,27 +31,27 @@ class _vistaEsquemaParaleloState extends State<vistaEsquemaParalelo> {
       // Padding izquierdo para el primer vagón de la fila
       if (i == start) {
         fila.add(
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
+          const Padding(
+            padding: EdgeInsets.only(left: 30),
             child: Vagon(),
           ),
         );
       } else if (i == start + count - 1) {
         // Padding derecho para el último vagón de la fila
         fila.add(
-          Padding(
-            padding: const EdgeInsets.only(right: 30),
+          const Padding(
+            padding: EdgeInsets.only(right: 30),
             child: Vagon(),
           ),
         );
       } else {
         // Vagones intermedios sin padding especial
-        fila.add(Vagon());
+        fila.add(const Vagon());
       }
 
       // Pasarelas entre vagones
       if (i < start + count - 1) {
-        fila.add(Pasarelas());
+        fila.add(const Pasarelas());
       }
     }
     return fila;
@@ -93,7 +93,7 @@ class _vistaEsquemaParaleloState extends State<vistaEsquemaParalelo> {
                   padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
                   child: Text(
                     widget.nombreEst,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -112,7 +112,7 @@ class _vistaEsquemaParaleloState extends State<vistaEsquemaParalelo> {
             ),
           ],
         ),
-        shape: Border(
+        shape: const Border(
           bottom: BorderSide(color: Colors.black, width: 1.0),
           top: BorderSide(color: Colors.black, width: 1.0),
         ),
@@ -136,7 +136,7 @@ class _vistaEsquemaParaleloState extends State<vistaEsquemaParalelo> {
                       Row(
                         children: _buildFila(0, filaCount),
                       ),
-                      SizedBox(height: 20), // Espaciado entre filas
+                      const SizedBox(height: 20), // Espaciado entre filas
                       // Fila inferior
                       Row(
                         children: _buildFila(filaCount, filaCount),
@@ -156,13 +156,13 @@ class _vistaEsquemaParaleloState extends State<vistaEsquemaParalelo> {
                 FloatingActionButton(
                   heroTag: "zoomIn",
                   onPressed: _zoomIn,
-                  child: Icon(Icons.add),
+                  child: const Icon(Icons.add),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 FloatingActionButton(
                   heroTag: "zoomOut",
                   onPressed: _zoomOut,
-                  child: Icon(Icons.remove),
+                  child: const Icon(Icons.remove),
                 ),
               ],
             ),

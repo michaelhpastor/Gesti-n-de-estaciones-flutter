@@ -22,8 +22,8 @@ class _editarEsquemaState extends State<editarEsquema> {
               child: Container(
                 //color: Colors.green,
                 alignment: Alignment.center,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+                child: const Padding(
+                  padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
                   child: Text(
                     'Sistema de gestión de esquemas de estaciones',
                     style: TextStyle(
@@ -45,11 +45,11 @@ class _editarEsquemaState extends State<editarEsquema> {
                 )),
           ],
         ),
-        shape: Border(
+        shape: const Border(
             bottom: BorderSide(color: Colors.black, width: 1.0),
             top: BorderSide(color: Colors.black, width: 1.0)),
       ),
-      body: Text("Vista de editor de esquema")
+      body: const Text("Vista de editor de esquema")
     );
   }
 }

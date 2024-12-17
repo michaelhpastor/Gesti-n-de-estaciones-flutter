@@ -44,7 +44,7 @@ class _mapaInteractivo2State extends State<mapaInteractivo2> {
   Widget vista1o2(int num) {
     if (num == 1) {
       return ListTile(
-        title: Text('Busqueda simple'),
+        title: const Text('Busqueda simple'),
         onTap: () {
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) => BusquedaEstaciones()));
@@ -52,7 +52,7 @@ class _mapaInteractivo2State extends State<mapaInteractivo2> {
       );
     } else if (num == 2) {
       return ListTile(
-        title: Text('Busqueda simple'),
+        title: const Text('Busqueda simple'),
         onTap: () {
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => menuEditor()));
@@ -66,53 +66,53 @@ class _mapaInteractivo2State extends State<mapaInteractivo2> {
   Color cambiocolor(String t) {
     switch (t) {
       case "A":
-        return Color.fromARGB(255, 32, 65, 154);
+        return const Color.fromARGB(255, 32, 65, 154);
 
       case "B":
-        return Color.fromARGB(255, 122, 193, 67);
+        return const Color.fromARGB(255, 122, 193, 67);
 
       case "C":
-        return Color.fromARGB(255, 253, 187, 48);
+        return const Color.fromARGB(255, 253, 187, 48);
 
       case "D":
-        return Color.fromARGB(255, 122, 104, 174);
+        return const Color.fromARGB(255, 122, 104, 174);
 
       case "E":
-        return Color.fromARGB(255, 171, 101, 13);
+        return const Color.fromARGB(255, 171, 101, 13);
 
       case "F":
-        return Color.fromARGB(255, 227, 27, 35);
+        return const Color.fromARGB(255, 227, 27, 35);
 
       case "G":
-        return Color.fromARGB(255, 0, 164, 228);
+        return const Color.fromARGB(255, 0, 164, 228);
 
       case "H":
-        return Color.fromARGB(255, 246, 137, 31);
+        return const Color.fromARGB(255, 246, 137, 31);
 
       case "J":
-        return Color.fromARGB(255, 221, 155, 165);
+        return const Color.fromARGB(255, 221, 155, 165);
 
       case "K":
-        return Color.fromARGB(255, 207, 171, 122);
+        return const Color.fromARGB(255, 207, 171, 122);
 
       case "L":
-        return Color.fromARGB(255, 0, 170, 166);
+        return const Color.fromARGB(255, 0, 170, 166);
 
       case "M":
-        return Color.fromARGB(255, 162, 25, 132);
+        return const Color.fromARGB(255, 162, 25, 132);
       default:
         return Colors.grey;
     }
   }
 
-  final myPosition = LatLng(4.65, -74.12);
+  final myPosition = const LatLng(4.65, -74.12);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           toolbarHeight: 70,
-          backgroundColor: Color.fromARGB(255, 227, 27, 35),
+          backgroundColor: const Color.fromARGB(255, 227, 27, 35),
           titleSpacing: 0.0,
           title: Row(
             children: [
@@ -121,8 +121,8 @@ class _mapaInteractivo2State extends State<mapaInteractivo2> {
                 child: Container(
                   //color: Colors.green,
                   alignment: Alignment.center,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
                     child: Text(
                       'Sistema de gestión de esquemas de estaciones',
                       style: TextStyle(
@@ -144,7 +144,7 @@ class _mapaInteractivo2State extends State<mapaInteractivo2> {
                   )),
             ],
           ),
-          shape: Border(
+          shape: const Border(
               bottom: BorderSide(color: Colors.black, width: 1.0),
               top: BorderSide(color: Colors.black, width: 1.0)),
         ),
@@ -156,7 +156,7 @@ class _mapaInteractivo2State extends State<mapaInteractivo2> {
             children: [
               Container(
                 height: 80,
-                child: DrawerHeader(
+                child: const DrawerHeader(
                   decoration: BoxDecoration(
                     color: Color.fromARGB(255, 227, 27, 35),
                   ),
@@ -168,7 +168,7 @@ class _mapaInteractivo2State extends State<mapaInteractivo2> {
               ),
               vista1o2(numVista),
               ListTile(
-                title: Text('Cerrar sesion'),
+                title: const Text('Cerrar sesion'),
                 onTap: () {
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => LogIn()));
@@ -184,7 +184,7 @@ class _mapaInteractivo2State extends State<mapaInteractivo2> {
           height: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(
+              image: const AssetImage(
                 'assets/imagenes/Trasmi.png',
               ),
               fit: BoxFit.cover,
@@ -204,11 +204,11 @@ class _mapaInteractivo2State extends State<mapaInteractivo2> {
                     future: fetchEstaciones2(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(child: CircularProgressIndicator());
+                        return const Center(child: CircularProgressIndicator());
                       } else if (snapshot.hasError) {
                         return Center(child: Text('Error: ${snapshot.error}'));
                       } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                        return Center(
+                        return const Center(
                             child: Text('No se encontraron estaciones'));
                       } else {
                         // Si se cargan correctamente las estaciones, creamos los marcadores
@@ -240,7 +240,7 @@ class _mapaInteractivo2State extends State<mapaInteractivo2> {
                             TileLayer(
                               urlTemplate:
                                   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                              subdomains: ['a', 'b', 'c'],
+                              subdomains: const ['a', 'b', 'c'],
                             ),
                             MarkerLayer(markers: markers),
                           ],
